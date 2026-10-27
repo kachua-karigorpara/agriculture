@@ -1,0 +1,300 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>কারিগরপাড়া কৃষি</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;800&display=swap">
+<style>
+/* Layout: sunlit field hero with current Bengali month, seasonal crop calendar (12-month grid), crop cards, farm practice tips, helpline + contact band */
+:root {
+  --bg: #f6f4ea;
+  --surface: #fffdf6;
+  --fg: #1f2a1c;
+  --muted: #5c6551;
+  --paddy: #2f6b2f;
+  --paddy-2: #4c8a3d;
+  --soil: #6b4a2b;
+  --sun: #e4a817;
+  --sun-soft: #f8e7ae;
+  --sow: #8cb86a;
+  --harvest: #e0a526;
+  --line: #ddd8c3;
+  --on-paddy: #f2f8ea;
+  --font-display: "Noto Serif Bengali", "Kalpurush", serif;
+  --font-body: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11170f; --surface: #182114; --fg: #e8eedf; --muted: #a3b098;
+    --paddy: #1c4a20; --paddy-2: #3d7a38; --soil: #c79a6a; --sun: #efbf3f; --sun-soft: #2e2810;
+    --sow: #5f8f45; --harvest: #d9a22a; --line: #2a3624; --on-paddy: #f2f8ea; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11170f; --surface: #182114; --fg: #e8eedf; --muted: #a3b098;
+  --paddy: #1c4a20; --paddy-2: #3d7a38; --soil: #c79a6a; --sun: #efbf3f; --sun-soft: #2e2810;
+  --sow: #5f8f45; --harvest: #d9a22a; --line: #2a3624; --on-paddy: #f2f8ea; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 17px; line-height: 1.7; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.4; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.wrap {
+  max-width: 1120px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.kicker { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--soil); font-weight: 600; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paddy); }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--paddy); color: var(--on-paddy); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { font-family: var(--font-display); font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.nav { display: flex; gap: 2px; flex-wrap: wrap; justify-content: flex-end; }
+.nav a { text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 0.95rem; }
+.nav a:hover { background: rgba(255,255,255,0.14); }
+@media (max-width: 760px) { .nav a:nth-child(n+4) { display: none; } }
+
+/* hero */
+.hero { background: var(--paddy); color: var(--on-paddy); position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: center; padding-block: 56px; position: relative; }
+.hero .kicker { color: var(--sun-soft); }
+.hero h1 { font-size: clamp(2.1rem, 5.2vw, 3.5rem); font-weight: 800; margin-top: 10px; }
+.hero .lead { margin-top: 16px; max-width: 33em; color: color-mix(in srgb, var(--on-paddy) 85%, transparent); font-size: 1.1rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn { display: inline-block; text-decoration: none; padding: 11px 22px; border-radius: 8px; font-weight: 600; border: 2px solid transparent; cursor: pointer; font-family: inherit; font-size: 1rem; }
+.btn-sun { background: var(--sun); color: #2a1f00; }
+.btn-sun:hover { background: #fff; }
+.btn-line { border-color: rgba(255,255,255,0.45); color: var(--on-paddy); }
+.btn-line:hover { background: rgba(255,255,255,0.14); }
+.now { background: var(--surface); color: var(--fg); border-radius: 16px; padding: 24px; min-width: 0; border-bottom: 6px solid var(--sun); }
+.now .label { color: var(--muted); font-size: 0.9rem; }
+.now .month { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: var(--paddy-2); line-height: 1.3; }
+.now ul { margin: 12px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); list-style: none; display: grid; gap: 6px; font-size: 0.97rem; }
+.now li { display: flex; gap: 10px; align-items: baseline; }
+.tag { flex: none; font-size: 0.75rem; font-weight: 700; padding: 1px 9px; border-radius: 999px; }
+.tag.s { background: var(--sow); color: #10230a; }
+.tag.h { background: var(--harvest); color: #2a1f00; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
+.furrows { height: 36px; background: repeating-linear-gradient(90deg, var(--paddy-2) 0 3px, transparent 3px 22px); opacity: 0.45; }
+
+section { padding-block: 64px; }
+.sec-head { max-width: 40em; margin-bottom: 32px; }
+.sec-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); margin-top: 6px; }
+.sec-head p { color: var(--muted); margin-top: 10px; }
+.alt { background: var(--surface); border-block: 1px solid var(--line); }
+
+/* calendar */
+.cal-box { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.cal { min-width: 760px; display: grid; grid-template-columns: 130px repeat(12, 1fr); font-size: 0.88rem; }
+.cal > div { padding: 9px 4px; border-bottom: 1px solid var(--line); text-align: center; }
+.cal .h { font-weight: 700; color: var(--muted); background: var(--bg); }
+.cal .h.cur { background: var(--sun-soft); color: var(--fg); }
+.cal .crop { text-align: left; padding-left: 14px; font-family: var(--font-display); font-weight: 700; }
+.cal .c { border-left: 1px solid var(--line); }
+.cal .c.cur { background: color-mix(in srgb, var(--sun) 12%, transparent); }
+.cal .c.s { background: var(--sow); }
+.cal .c.h2 { background: var(--harvest); }
+.cal .c.s.cur, .cal .c.h2.cur { box-shadow: inset 0 0 0 2px var(--fg); }
+.legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; color: var(--muted); font-size: 0.92rem; }
+.legend i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+.note { margin-top: 10px; font-size: 0.88rem; color: var(--muted); }
+
+/* crops */
+.crops { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.crop-card { border: 1px solid var(--line); border-radius: 12px; padding: 22px; background: var(--bg); min-width: 0; }
+.crop-card h3 { font-size: 1.2rem; }
+.crop-card .season { color: var(--soil); font-size: 0.85rem; font-weight: 600; }
+.crop-card p { margin-top: 8px; color: var(--muted); font-size: 0.96rem; }
+
+/* tips */
+.tips { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; border-top: 1px solid var(--line); }
+.tip { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 34px 1fr; gap: 12px; min-width: 0; }
+.tip svg { color: var(--paddy-2); margin-top: 4px; }
+.tip h3 { font-size: 1.08rem; }
+.tip p { color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+@media (max-width: 760px) { .tips { grid-template-columns: 1fr; } }
+
+/* band */
+.band { background: var(--paddy); color: var(--on-paddy); }
+.band .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.band .kicker { color: var(--sun-soft); }
+.band h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin-top: 6px; }
+.band p { color: color-mix(in srgb, var(--on-paddy) 88%, transparent); margin-top: 10px; }
+.helpline { margin-top: 18px; border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.helpline b { font-family: var(--font-display); font-size: 2.2rem; color: var(--sun); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.helpline span { color: var(--sun-soft); font-size: 0.92rem; }
+.contact-list { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.contact-list li { display: grid; grid-template-columns: 100px 1fr; gap: 12px; }
+.contact-list span { color: var(--sun-soft); font-size: 0.9rem; }
+@media (max-width: 860px) { .band .cols { grid-template-columns: 1fr; } }
+footer { background: var(--paddy); color: color-mix(in srgb, var(--on-paddy) 72%, transparent); border-top: 1px solid rgba(255,255,255,0.18); font-size: 0.9rem; }
+footer .wrap { padding-block: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="কারিগরপাড়া কৃষি, শুরুতে যান">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 29V10M16 10c0-4 3-6 7-6 0 4-3 6-7 6zM16 17c0-4-3-6-7-6 0 4 3 6 7 6zM16 24c0-3 2-5 6-5 0 3-2 5-6 5z"/></svg>
+      <span>কারিগরপাড়া কৃষি</span>
+    </a>
+    <nav class="nav" aria-label="প্রধান মেনু">
+      <a href="#calendar">ফসলের পঞ্জিকা</a>
+      <a href="#crops">প্রধান ফসল</a>
+      <a href="#tips">চাষের পরামর্শ</a>
+      <a href="#contact">সহায়তা</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">কচুয়া · কারিগরপাড়া</p>
+        <h1>কারিগরপাড়ার কৃষক ও কৃষির তথ্যকেন্দ্র</h1>
+        <p class="lead">এই মাসে কী বুনবেন, কী কাটবেন, কোন ফসলে কী যত্ন নেবেন এবং সমস্যায় কার কাছে যাবেন। এক পাতায় সব।</p>
+        <div class="hero-actions">
+          <a class="btn btn-sun" href="#calendar">এই মাসের কাজ</a>
+          <a class="btn btn-line" href="#contact">কৃষি সহায়তা</a>
+        </div>
+      </div>
+      <div class="now" aria-live="polite">
+        <p class="label">এখন বাংলা মাস</p>
+        <p class="month" id="curMonth">–</p>
+        <ul id="curTasks"></ul>
+      </div>
+    </div>
+    <div class="furrows" aria-hidden="true"></div>
+  </div>
+
+  <section id="calendar">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">ফসলের পঞ্জিকা</p>
+        <h2>বাংলা মাস অনুযায়ী বপন ও কাটার সময়</h2>
+        <p>চলতি মাস হলুদ রঙে চিহ্নিত। এলাকার মাটি ও জাত ভেদে সময় কিছুটা আগে-পরে হতে পারে।</p>
+      </div>
+      <div class="cal-box"><div class="cal" id="cal" role="table" aria-label="ফসলের পঞ্জিকা"></div></div>
+      <div class="legend">
+        <span><i style="background:var(--sow)"></i>বীজতলা, বপন বা রোপণ</span>
+        <span><i style="background:var(--harvest)"></i>ফসল কাটার সময়</span>
+      </div>
+      <p class="note">সাধারণ সময়সূচি। জাত অনুযায়ী উপজেলা কৃষি অফিসের পরামর্শ নিন।</p>
+    </div>
+  </section>
+
+  <section id="crops" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">প্রধান ফসল</p>
+        <h2>তিন মৌসুমের ধান ও অন্যান্য ফসল</h2>
+      </div>
+      <div class="crops">
+        <article class="crop-card"><p class="season">রবি মৌসুম · শীত</p><h3>বোরো ধান</h3><p>সেচনির্ভর প্রধান ফসল। বীজতলা অগ্রহায়ণ-পৌষে, রোপণ পৌষ-মাঘে। ঠান্ডায় চারা রক্ষায় বীজতলা ঢেকে দিন।</p></article>
+        <article class="crop-card"><p class="season">খরিফ-২ · বর্ষা</p><h3>আমন ধান</h3><p>বর্ষার পানিতে চাষ হয়। শ্রাবণ-ভাদ্রে রোপণ, অগ্রহায়ণে কাটা। জমিতে পানি ধরে রাখার আইল ঠিক রাখুন।</p></article>
+        <article class="crop-card"><p class="season">খরিফ-১ · গ্রীষ্ম</p><h3>আউশ ধান</h3><p>চৈত্র-বৈশাখে বপন, আষাঢ়-শ্রাবণে কাটা। কম সেচে হয়, আমন চাষের আগে জমি খালি হয়।</p></article>
+        <article class="crop-card"><p class="season">রবি মৌসুম</p><h3>সরিষা</h3><p>কার্তিকে বপন, পৌষ-মাঘে কাটা। ধানের পরে অল্প সময়ে ফলে, তেল ও খৈল দুটোই কাজে লাগে।</p></article>
+        <article class="crop-card"><p class="season">রবি মৌসুম</p><h3>আলু ও শীতকালীন সবজি</h3><p>কার্তিক-অগ্রহায়ণে রোপণ। ফুলকপি, বাঁধাকপি, টমেটো ও শিমের জন্য সুনিষ্কাশিত উঁচু জমি বেছে নিন।</p></article>
+        <article class="crop-card"><p class="season">খরিফ-১</p><h3>পাট</h3><p>ফাল্গুন-চৈত্রে বপন, আষাঢ়-ভাদ্রে কাটা। কাটার পর পানিতে জাগ দিয়ে আঁশ ছাড়ান।</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">চাষের পরামর্শ</p>
+        <h2>ফলন বাড়ানোর ও খরচ কমানোর কয়েকটি উপায়</h2>
+      </div>
+      <div class="tips">
+        <article class="tip"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg><div><h3>সেচের পানি বাঁচান</h3><p>বোরো ধানে পর্যায়ক্রমে ভেজা ও শুকনো (এডব্লিউডি) পদ্ধতিতে সেচ দিলে পানি ও বিদ্যুৎ বিল কমে।</p></div></article>
+        <article class="tip"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20h16M7 20V10l5-5 5 5v10"/></svg><div><h3>মাটি পরীক্ষা করান</h3><p>সার দেওয়ার আগে উপজেলা কৃষি অফিসে মাটি পরীক্ষা করালে প্রয়োজনের বেশি ইউরিয়া কেনা লাগে না।</p></div></article>
+        <article class="tip"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><div><h3>সময়মতো বীজ বপন</h3><p>দেরিতে রোপণে ফলন কমে। আবহাওয়ার পূর্বাভাস দেখে চারা তোলার দিন ঠিক করুন।</p></div></article>
+        <article class="tip"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><div><h3>ভালো বীজ বেছে নিন</h3><p>অনুমোদিত ও উচ্চফলনশীল জাতের বীজ সরকারি বীজ ডিলার বা কৃষি অফিস থেকে নিন।</p></div></article>
+        <article class="tip"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v18M5 8l7 4 7-4"/></svg><div><h3>পোকা ও রোগ আগেই ধরুন</h3><p>মাঠ ঘুরে দেখুন। ডাল পুঁতে পাখি বসার ব্যবস্থা করলে পোকা কমে। বিষ ছিটানোর আগে কৃষি কর্মকর্তার পরামর্শ নিন।</p></div></article>
+        <article class="tip"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 18c0-8 4-12 12-12 0 8-4 12-12 12zM4 20l8-8"/></svg><div><h3>জৈব সার ব্যবহার করুন</h3><p>গোবর, কম্পোস্ট ও খড় জমিতে মেশালে মাটির উর্বরতা বছর বছর বজায় থাকে।</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="band">
+    <div class="wrap cols">
+      <div>
+        <p class="kicker">কৃষি সহায়তা</p>
+        <h2>সমস্যায় বিনামূল্যে পরামর্শ নিন</h2>
+        <p>ফসলের রোগ, পোকা, সার বা বীজ নিয়ে সরকারি কৃষি কল সেন্টারে ফোন করে কৃষিবিদের পরামর্শ পাওয়া যায়।</p>
+        <div class="helpline">
+          <div><span>কৃষি কল সেন্টার</span><br><b>১৬১২৩</b></div>
+          <span>দেশের যেকোনো মোবাইল থেকে</span>
+        </div>
+      </div>
+      <div>
+        <p class="kicker">স্থানীয় যোগাযোগ</p>
+        <h2>কারিগরপাড়া কৃষক দল</h2>
+        <ul class="contact-list">
+          <li><span>ঠিকানা</span><b>কারিগরপাড়া, কচুয়া</b></li>
+          <li><span>দলনেতা</span><b>০১XXX-XXXXXX</b></li>
+          <li><span>উপসহকারী কৃষি অফিসার</span><b>০১XXX-XXXXXX</b></li>
+          <li><span>উপজেলা কৃষি অফিস</span><b>কচুয়া উপজেলা সদর</b></li>
+        </ul>
+        <p>নম্বর ও ঠিকানা সঠিক তথ্য দিয়ে বদলে নিন।</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© কারিগরপাড়া কৃষক ও কৃষি তথ্যকেন্দ্র</span>
+    <span>মাটির কাছাকাছি, কৃষকের পাশে।</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var digits = "০১২৩৪৫৬৭৮৯";
+  var M = ["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];
+  // approximate start of each Bengali month in the Gregorian calendar (month, day)
+  var START = [[3,14],[4,15],[5,15],[6,16],[7,16],[8,16],[9,16],[10,15],[11,15],[0,14],[1,13],[2,15]];
+  var now = new Date(), cur = 0, best = null;
+  [now.getFullYear() - 1, now.getFullYear()].forEach(function (y) {
+    START.forEach(function (st, i) {
+      var d = new Date(y, st[0], st[1]);
+      if (d <= now && (!best || d > best)) { best = d; cur = i; }
+    });
+  });
+  // crops: s = sowing/planting months, h = harvest months (0 = Boishakh)
+  var C = [
+    ["বোরো ধান", [8,9], [0]],
+    ["আমন ধান", [2,3,4], [7]],
+    ["আউশ ধান", [11,0], [2,3]],
+    ["সরিষা", [6], [8,9]],
+    ["আলু", [6,7], [10,11]],
+    ["শীতের সবজি", [5,6], [8,9,10]],
+    ["পাট", [10,11], [2,3,4]]
+  ];
+  var cal = document.getElementById("cal");
+  var html = '<div class="h crop">ফসল</div>';
+  M.forEach(function (m, i) { html += '<div class="h' + (i === cur ? " cur" : "") + '">' + m + "</div>"; });
+  C.forEach(function (c) {
+    html += '<div class="crop">' + c[0] + "</div>";
+    for (var i = 0; i < 12; i++) {
+      var k = c[1].indexOf(i) > -1 ? " s" : (c[2].indexOf(i) > -1 ? " h2" : "");
+      html += '<div class="c' + k + (i === cur ? " cur" : "") + '"' + (k ? ' title="' + c[0] + (k === " s" ? " বপন" : " কাটা") + '"' : "") + "></div>";
+    }
+  });
+  cal.innerHTML = html;
+
+  document.getElementById("curMonth").textContent = M[cur];
+  var ul = document.getElementById("curTasks"), out = "";
+  C.forEach(function (c) {
+    if (c[1].indexOf(cur) > -1) out += '<li><span class="tag s">বপন</span>' + c[0] + "</li>";
+    if (c[2].indexOf(cur) > -1) out += '<li><span class="tag h">কাটা</span>' + c[0] + "</li>";
+  });
+  ul.innerHTML = out || "<li>এই মাসে বিশেষ বপন বা কাটার কাজ নেই। জমি ও সেচের যত্ন নিন।</li>";
+})();
+</script>
+
+</body></html>
